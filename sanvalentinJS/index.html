@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>San Valentín JS</title>
+    <style>
+        *{ margin: 0; padding: 0;}
+        body {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #000;
+            cursor: none;
+        }
+        span {
+            position: absolute;
+            background: url(corazon.png);
+            pointer-events: none;
+            width: 100px;
+            height: 100px;
+            transform: translate(-50%, -50%);
+            background-size: cover;
+            animation: corazon 2s linear infinite;
+        }
+        @keyframes corazon{
+            0%{
+                transform: translate(-50%, -50%);
+                opacity: 1;
+                filter: hue-rotate(0deg)
+            }
+            100% {
+                transform: translate(-50%, -800%);
+                opacity: 0;
+                filter: hue-rotate(-260deg)
+            }
+        }
+    </style>
+    <script>
+
+        document.addEventListener("mousemove", function(e){
+            var body = document.querySelector('body')
+            var corazon = document.createElement("span")
+            var x = e.offsetX
+            var y = e.offsetY
+            corazon.style.left = x+'px'
+            corazon.style.top = y+'px'
+            var size = Math.random() * 100
+            corazon.style.width = 30+size+'px' 
+            corazon.style.height = 30+size+'px'
+            
+            body.appendChild(corazon)
+
+            setTimeout(function(){
+                corazon.remove();
+            }, 500)
+        })
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
